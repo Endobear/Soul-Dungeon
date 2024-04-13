@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0txq6ywy28rf"]
+
+[ext_resource type="PackedScene" uid="uid://ogjebt3wfacr" path="res://Cenas/jogador.tscn" id="1_sos3o"]
+[ext_resource type="Texture2D" uid="uid://b4qudh3ipsbw8" path="res://icon.svg" id="2_aw8fa"]
+[ext_resource type="PackedScene" uid="uid://ccpeh2nrjl0t8" path="res://Cenas/Inimizade.tscn" id="3_gag1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3rop"]
+size = Vector2(113, 114)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="jogador" parent="." instance=ExtResource("1_sos3o")]
+position = Vector2(527, 195)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(455, 442)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_aw8fa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_d3rop")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_gag1j")]
+position = Vector2(98, 256)

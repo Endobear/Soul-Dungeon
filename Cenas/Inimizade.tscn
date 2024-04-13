@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccpeh2nrjl0t8"]
+
+[ext_resource type="Texture2D" uid="uid://m3716rppbqbg" path="res://Sprites/INIMIGO TOPERSON.png" id="1_r5r3f"]
+[ext_resource type="Script" path="res://Cenas/Inimizade.gd" id="1_yx2e7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5r70b"]
+radius = 160.078
+
+[node name="inimigo" type="CharacterBody2D"]
+script = ExtResource("1_yx2e7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.724256, 0.724256)
+texture = ExtResource("1_r5r3f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5r70b")
