@@ -1,14 +1,31 @@
 class_name Inimigo 
 extends CharacterBody2D
-@export var max_health: int = 2
-@onready var health = max_health
+@export var infoInimigo : informacoesInimigo
+var vida:= 5
+var vidaMax:= 10
+var velocidade := 170
+var dano := 1
+var animacoes : SpriteFrames
+
+
+@onready var animated_sprite_2d = $AnimatedSprite2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	vida = infoInimigo.vida
+	vidaMax = infoInimigo.vidaMax
+	velocidade = infoInimigo.velocidade
+	dano = infoInimigo.dano
+	animacoes = infoInimigo.animacoes 
+	animated_sprite_2d.sprite_frames = animacoes
 	pass # Replace with function body.
 
-
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if health <= 0:
+	animated_sprite_2d.play()
+	if vida <= 0:
+		
 		queue_free()
+		

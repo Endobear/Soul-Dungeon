@@ -326,7 +326,7 @@ script = ExtResource("1_4oun1")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yt3j6")
 animation = &"stunadocima"
-frame_progress = 0.294011
+frame_progress = 0.982749
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
