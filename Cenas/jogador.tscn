@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ogjebt3wfacr"]
+[gd_scene load_steps=36 format=3 uid="uid://ogjebt3wfacr"]
 
 [ext_resource type="Script" path="res://Códigos/jogador.gd" id="1_4oun1"]
 [ext_resource type="Texture2D" uid="uid://dok00lhvkmete" path="res://Sprites/para baixo (protagonista).png" id="2_w6l37"]
@@ -110,38 +110,6 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_21pv4"]
 atlas = ExtResource("5_3fhpm")
 region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvtc2"]
-atlas = ExtResource("2_w6l37")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mfpg4"]
-atlas = ExtResource("2_w6l37")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_edu6p"]
-atlas = ExtResource("3_fivun")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mrwfs"]
-atlas = ExtResource("3_fivun")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vg8vb"]
-atlas = ExtResource("4_ilxhy")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbie5"]
-atlas = ExtResource("4_ilxhy")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_irfvb"]
-atlas = ExtResource("5_3fhpm")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rcb0"]
-atlas = ExtResource("5_3fhpm")
-region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yt3j6"]
 animations = [{
@@ -267,50 +235,6 @@ animations = [{
 "loop": true,
 "name": &"idleesquerda",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvtc2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mfpg4")
-}],
-"loop": true,
-"name": &"stunadobaixo",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_edu6p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mrwfs")
-}],
-"loop": true,
-"name": &"stunadocima",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vg8vb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cbie5")
-}],
-"loop": true,
-"name": &"stunadodireita",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_irfvb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6rcb0")
-}],
-"loop": true,
-"name": &"stunadoesquerda",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bao5m"]
@@ -320,13 +244,11 @@ size = Vector2(15, 16)
 size = Vector2(30, 8)
 
 [node name="jogador" type="CharacterBody2D"]
-collision_layer = 2
 script = ExtResource("1_4oun1")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yt3j6")
-animation = &"stunadocima"
-frame_progress = 0.294011
+animation = &"andarbaixo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
@@ -343,25 +265,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(0.15625, 12)
 shape = SubResource("RectangleShape2D_g4yoy")
 
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="collisionbox" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_bao5m")
-
-[node name="Iframes" type="Timer" parent="."]
-wait_time = 0.5
-
 [connection signal="timeout" from="duracaodouglas" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashicoldaun" to="." method="_on_dashicoldaun_timeout"]
-[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="timeout" from="Iframes" to="." method="_on_iframes_timeout"]
