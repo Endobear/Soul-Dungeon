@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var vida = 15
+var vidaMax = 30
 var speed = 175
 var speedz = speed * 2
 var speedx = speed
@@ -13,6 +15,8 @@ var dash_dir =  Vector2.ZERO
 @onready var estado = "idle"
 @onready var direcao = "baixo"
 @onready var hurtbox = $hurtbox
+@onready var hitbox = $hitbox
+@onready var iframes = $Iframes
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +26,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	print(estado)
 	
 	
 	var current_speed = speed
@@ -35,6 +39,9 @@ func _process(delta):
 		sprite_2d.speed_scale = 1
 	
 	
+	if iframes.time_left > 0:
+		current_speed = speed / 2
+	
 	var movimento_horizontal = Input.get_axis("mover_esq","mover_dire")
 	var movimento_vertical = Input.get_axis("mover_cima","mover_baixo")
 	
@@ -42,7 +49,7 @@ func _process(delta):
 	
 	
 	
-	if direction and (not is_dashing):
+	if direction and (not is_dashing) :
 		estado = "andar"
 		if(movimento_vertical == 1):
 			direcao = "baixo"
@@ -83,7 +90,7 @@ func _process(delta):
 			print(objeto)
 			if objeto != self:
 				if objeto is Inimigo:
-					objeto.health -= 1
+					objeto.vida -= 1
 		
 	TrocarAnim()
 	move_and_slide()
@@ -103,3 +110,14 @@ func TrocarAnim():
 	
 	sprite_2d.play(estado + direcao)
 
+
+
+func _on_hitbox_area_entered(area):
+	if iframes.time_left == 0:
+		vida -= (area.owner.dano)
+		estado = "stunado"
+		iframes.start()
+
+
+func _on_iframes_timeout():
+	pass # Replace with function body.

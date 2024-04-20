@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="informacoesInimigo" load_steps=3 format=3 uid="uid://c2wvgnjnm06u7"]
+
+[ext_resource type="Script" path="res://Códigos/informacoesInimigo.gd" id="1_en5wr"]
+[ext_resource type="SpriteFrames" uid="uid://cgelyq1rk3og4" path="res://Cenas/animacoesSlime.tres" id="1_xy7n2"]
+
+[resource]
+script = ExtResource("1_en5wr")
+vida = 5
+vidaMax = 10
+velocidade = 170
+dano = 1
+animacoes = ExtResource("1_xy7n2")

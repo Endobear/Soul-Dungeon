@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3b3x3shq1jon"]
+[gd_scene load_steps=3 format=3 uid="uid://kxwck1ukxyjn"]
 
 [ext_resource type="PackedScene" uid="uid://ogjebt3wfacr" path="res://Cenas/jogador.tscn" id="2_fon73"]
-[ext_resource type="TileSet" uid="uid://br8yb14mtxffe" path="res://jefferson.tres" id="2_frte7"]
+[ext_resource type="TileSet" uid="uid://ckuwjgmiley0k" path="res://jefferson.tres" id="2_frte7"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-679.0]
