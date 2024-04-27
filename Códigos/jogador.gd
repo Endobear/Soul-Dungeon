@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 var vida = 15
@@ -26,7 +27,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(estado)
+	print(iframes.time_left)
 	
 	
 	var current_speed = speed
@@ -80,10 +81,15 @@ func _process(delta):
 				$duracaodouglas.start()
 				$dashicoldaun.start()
 	
-	if Input.is_action_just_pressed("ataki_levi")and estado != "ataqueleve":
+	if Input.is_action_just_pressed("ataki_levi")and estado != "ataqueleve" and iframes.time_left != 0 :
 		estado = "ataqueleve"
-	if is_dashing:
+	elif iframes.time_left > 0.0:
+		estado = "stunado"
+	elif is_dashing:
 		velocity = dash_dir * 1300
+		
+		
+		
 	if estado == "ataqueleve":
 		var objetosAtacados = hurtbox.get_overlapping_bodies()
 		for objeto in objetosAtacados:
@@ -91,11 +97,20 @@ func _process(delta):
 			if objeto != self:
 				if objeto is Inimigo:
 					objeto.vida -= 1
+	var hits = hitbox.get_overlapping_areas()
+	if hits and iframes.time_left == 0:
+		LevarDano(hits[0])
 		
+	
 	TrocarAnim()
 	move_and_slide()
 	
 
+func LevarDano(area: Area2D):
+	print ("MEATAKARU AAAAAAAAAAAAAAA") 
+	vida -= (area.owner.dano)
+	estado = "stunado"
+	iframes.start()
 
 
 func _on_timer_timeout():
@@ -107,16 +122,19 @@ func _on_dashicoldaun_timeout():
 	can_dash = true
 
 func TrocarAnim():
-	
+	#if estado == "stunado":
+		#var AtualFrame = sprite_2d.frame
+		#sprite_2d.play(estado + direcao)
+		#sprite_2d.frame = AtualFrame
+	#else:
+		
 	sprite_2d.play(estado + direcao)
 
 
 
 func _on_hitbox_area_entered(area):
 	if iframes.time_left == 0:
-		vida -= (area.owner.dano)
-		estado = "stunado"
-		iframes.start()
+		LevarDano(area)
 
 
 func _on_iframes_timeout():

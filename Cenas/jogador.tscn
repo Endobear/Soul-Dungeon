@@ -351,7 +351,7 @@ position = Vector2(0.15625, 12)
 shape = SubResource("RectangleShape2D_g4yoy")
 
 [node name="hitbox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 4
 
 [node name="collisionbox" type="CollisionShape2D" parent="hitbox"]
@@ -359,7 +359,8 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_bao5m")
 
 [node name="Iframes" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.5
+one_shot = true
 
 [connection signal="timeout" from="duracaodouglas" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashicoldaun" to="." method="_on_dashicoldaun_timeout"]

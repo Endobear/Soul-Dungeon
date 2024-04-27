@@ -6,7 +6,7 @@ var vidaMax:= 10
 var velocidade := 170
 var dano := 1
 var animacoes : SpriteFrames
-
+var player  : Player  = null
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
@@ -25,7 +25,32 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	animated_sprite_2d.play()
+	var distance_from_player
+	var direction
 	if vida <= 0:
 		
 		queue_free()
 		
+	if player:
+		distance_from_player = Vector2(player.transform.get_origin().x - transform.get_origin().x, player.transform.get_origin().y - transform.get_origin().y)
+		direction = Vector2(clamp(distance_from_player.x, - 1, 1), clamp(distance_from_player.y, - 1, 1)).normalized()
+		
+		print(direction)
+		velocity.x = direction.x * velocidade
+		velocity.y = direction.y * velocidade
+	else:
+		velocity.x = 0; velocity.y = 0
+	move_and_slide()
+
+func _on_hunt_area_area_entered(area):
+	
+	if area.owner.name == "jogador":
+		player = area.owner
+	
+	pass # Replace with function body.
+
+
+func _on_hunt_area_area_exited(area):
+	if area.owner.name == "jogador":
+		player = null
+	pass # Replace with function body.
