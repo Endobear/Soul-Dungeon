@@ -34,8 +34,7 @@ func _process(delta):
 	if player:
 		distance_from_player = Vector2(player.transform.get_origin().x - transform.get_origin().x, player.transform.get_origin().y - transform.get_origin().y)
 		direction = Vector2(clamp(distance_from_player.x, - 1, 1), clamp(distance_from_player.y, - 1, 1)).normalized()
-		
-		print(direction)
+	
 		velocity.x = direction.x * velocidade
 		velocity.y = direction.y * velocidade
 	else:

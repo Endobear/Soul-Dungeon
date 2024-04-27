@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+
 var vida = 15
 var vidaMax = 30
 var speed = 175
@@ -18,6 +19,17 @@ var dash_dir =  Vector2.ZERO
 @onready var hurtbox = $hurtbox
 @onready var hitbox = $hitbox
 @onready var iframes = $Iframes
+var velocidadeKnock = 500
+var emKnock = false
+var KnockDirec = Vector2.ZERO
+@onready var knock = $Knock
+
+
+
+
+
+
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +39,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(iframes.time_left)
+	
 	
 	
 	var current_speed = speed
@@ -48,7 +60,15 @@ func _process(delta):
 	
 	var direction = Vector2(movimento_horizontal,movimento_vertical)
 	
-	
+	if emKnock:
+		
+		direction = false
+		can_dash = false
+		if knock.time_left > 0:
+			velocity.x = move_toward(velocity.x,0,10)
+			velocity.y = move_toward(velocity.y,0, 10)
+		else:
+			emKnock = false
 	
 	if direction and (not is_dashing) :
 		estado = "andar"
@@ -70,7 +90,7 @@ func _process(delta):
 		
 		velocity = direction.normalized() * current_speed
 		
-	elif not is_dashing:
+	elif not is_dashing and not emKnock:
 		velocity.x = move_toward(velocity.x,0,speedx)
 		velocity.y = move_toward(velocity.y,0,speedx)
 		estado = "idle"
@@ -93,7 +113,6 @@ func _process(delta):
 	if estado == "ataqueleve":
 		var objetosAtacados = hurtbox.get_overlapping_bodies()
 		for objeto in objetosAtacados:
-			print(objeto)
 			if objeto != self:
 				if objeto is Inimigo:
 					objeto.vida -= 1
@@ -107,11 +126,15 @@ func _process(delta):
 	
 
 func LevarDano(area: Area2D):
-	print ("MEATAKARU AAAAAAAAAAAAAAA") 
+	
 	vida -= (area.owner.dano)
 	estado = "stunado"
+	emKnock = true 
 	iframes.start()
-
+	knock.start()
+	KnockDirec = area.owner.position.direction_to(position)
+	velocity = velocidadeKnock * KnockDirec 
+	print(KnockDirec)
 
 func _on_timer_timeout():
 	is_dashing = false
