@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var vida = 15
 var vidaMax = 30
-var speed = 175
+var speed = 125
 var speedz = speed * 2
 var speedx = speed
 var can_dash = true
@@ -20,10 +20,12 @@ var dash_dir =  Vector2.ZERO
 @onready var hitbox = $hitbox
 @onready var iframes = $Iframes
 var velocidadeKnock = 500
+var velocidade_dash = 900
 var emKnock = false
 var KnockDirec = Vector2.ZERO
 @onready var knock = $Knock
-
+@onready var cooldown_atk = $CooldownATK
+var atacou = false
 
 
 
@@ -70,7 +72,7 @@ func _process(delta):
 		else:
 			emKnock = false
 	
-	if direction and (not is_dashing) :
+	if direction and (not is_dashing) and estado != "ataqueleve"  :
 		estado = "andar"
 		if(movimento_vertical == 1):
 			direcao = "baixo"
@@ -90,7 +92,7 @@ func _process(delta):
 		
 		velocity = direction.normalized() * current_speed
 		
-	elif not is_dashing and not emKnock:
+	elif not is_dashing and not emKnock and  estado != "ataqueleve" :
 		velocity.x = move_toward(velocity.x,0,speedx)
 		velocity.y = move_toward(velocity.y,0,speedx)
 		estado = "idle"
@@ -101,22 +103,28 @@ func _process(delta):
 				$duracaodouglas.start()
 				$dashicoldaun.start()
 	
-	if Input.is_action_just_pressed("ataki_levi")and estado != "ataqueleve" and iframes.time_left != 0 :
+	
+	if Input.is_action_just_pressed("ataki_levi") and estado != "ataqueleve"  and !emKnock:
+		velocity = Vector2.ZERO
+		cooldown_atk.start()
 		estado = "ataqueleve"
+		
 	elif iframes.time_left > 0.0:
 		estado = "stunado"
 	elif is_dashing:
-		velocity = dash_dir * 1300
+		velocity = dash_dir * velocidade_dash
 		
 		
 		
-	if estado == "ataqueleve":
-		var objetosAtacados = hurtbox.get_overlapping_bodies()
-		for objeto in objetosAtacados:
-			if objeto != self:
-				if objeto is Inimigo:
-					objeto.vida -= 1
-	var hits = hitbox.get_overlapping_areas()
+	if cooldown_atk.time_left > 0:
+		velocity = dash_dir * 60
+		if atacou == false:
+			ataque()
+			atacou = true
+
+					
+	var hits = hitbox.get_overlapping_areas() 
+	
 	if hits and iframes.time_left == 0:
 		LevarDano(hits[0])
 		
@@ -134,7 +142,7 @@ func LevarDano(area: Area2D):
 	knock.start()
 	KnockDirec = area.owner.position.direction_to(position)
 	velocity = velocidadeKnock * KnockDirec 
-	print(KnockDirec)
+	
 
 func _on_timer_timeout():
 	is_dashing = false
@@ -162,3 +170,17 @@ func _on_hitbox_area_entered(area):
 
 func _on_iframes_timeout():
 	pass # Replace with function body.
+
+
+
+func ataque():
+	var objetosAtacados = hurtbox.get_overlapping_bodies()
+	for objeto in objetosAtacados:
+		if objeto != self:
+			if objeto is Inimigo:	
+				objeto.levar_dano(1)
+
+
+func _on_cooldown_atk_timeout():
+	atacou = false
+	estado = "idle"

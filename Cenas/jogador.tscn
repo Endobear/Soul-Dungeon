@@ -317,7 +317,7 @@ animations = [{
 size = Vector2(15, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4yoy"]
-size = Vector2(30, 8)
+size = Vector2(30, 16)
 
 [node name="jogador" type="CharacterBody2D"]
 collision_layer = 2
@@ -333,7 +333,8 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_bao5m")
 
 [node name="duracaodouglas" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.082
+autostart = true
 
 [node name="dashicoldaun" type="Timer" parent="."]
 wait_time = 1.5
@@ -347,7 +348,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2(0.15625, 12)
+position = Vector2(0.15625, 16)
 shape = SubResource("RectangleShape2D_g4yoy")
 
 [node name="hitbox" type="Area2D" parent="."]
@@ -366,7 +367,12 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[node name="CooldownATK" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="duracaodouglas" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashicoldaun" to="." method="_on_dashicoldaun_timeout"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Iframes" to="." method="_on_iframes_timeout"]
+[connection signal="timeout" from="CooldownATK" to="." method="_on_cooldown_atk_timeout"]

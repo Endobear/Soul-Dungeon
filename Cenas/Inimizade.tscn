@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccpeh2nrjl0t8"]
+[gd_scene load_steps=6 format=3 uid="uid://ccpeh2nrjl0t8"]
 
 [ext_resource type="Script" path="res://Cenas/Inimizade.gd" id="1_yx2e7"]
 [ext_resource type="Resource" uid="uid://c2wvgnjnm06u7" path="res://Cenas/informacoesSlime.tres" id="2_gc0q0"]
+[ext_resource type="SpriteFrames" uid="uid://cgelyq1rk3og4" path="res://Cenas/animacoesSlime.tres" id="3_axgf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k44n"]
 size = Vector2(32, 31)
@@ -22,7 +23,8 @@ shape = SubResource("RectangleShape2D_5k44n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, 0)
 scale = Vector2(0.96875, 1)
-animation = &""
+sprite_frames = ExtResource("3_axgf0")
+animation = &"andando baixo"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -39,5 +41,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HuntArea"]
 shape = SubResource("CircleShape2D_118xp")
 
+[node name="Knockout" type="Timer" parent="."]
+wait_time = 0.356
+one_shot = true
+
 [connection signal="area_entered" from="HuntArea" to="." method="_on_hunt_area_area_entered"]
 [connection signal="area_exited" from="HuntArea" to="." method="_on_hunt_area_area_exited"]
+[connection signal="timeout" from="Knockout" to="." method="_on_knockout_timeout"]
