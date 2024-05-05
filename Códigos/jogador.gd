@@ -100,6 +100,7 @@ func _process(delta):
 			
 				can_dash = false
 				is_dashing = true
+				
 				$duracaodouglas.start()
 				$dashicoldaun.start()
 	
@@ -113,6 +114,7 @@ func _process(delta):
 		estado = "stunado"
 	elif is_dashing:
 		velocity = dash_dir * velocidade_dash
+		 
 		
 		
 		
@@ -125,7 +127,7 @@ func _process(delta):
 					
 	var hits = hitbox.get_overlapping_areas() 
 	
-	if hits and iframes.time_left == 0:
+	if hits and iframes.time_left == 0 and is_dashing == false:
 		LevarDano(hits[0])
 		
 	

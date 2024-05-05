@@ -13,3 +13,11 @@ func _process(delta):
 
 func _on_button_button_down():
 	get_tree().change_scene_to_file("res://Cenas/cenatesti.tscn")
+
+
+func _on_button_2_button_down():
+	get_tree().change_scene_to_file("res://Cenas/Settings.tscn")
+
+
+func _on_button_3_button_down():
+	get_tree().quit()

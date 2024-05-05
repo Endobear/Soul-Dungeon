@@ -17,6 +17,7 @@ infoInimigo = ExtResource("2_gc0q0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
+light_mask = 4
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_5k44n")
 
