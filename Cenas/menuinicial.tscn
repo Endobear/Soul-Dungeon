@@ -1,13 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckardvnnnephe"]
+[gd_scene load_steps=3 format=3 uid="uid://ckardvnnnephe"]
 
 [ext_resource type="Script" path="res://Códigos/menuinicial.gd" id="1_riu02"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_aoogi"]
-line_spacing = -1.2
-font_size = 39
-
-[sub_resource type="LabelSettings" id="LabelSettings_v25at"]
-font_size = 10
+[ext_resource type="Texture2D" uid="uid://c8g0i4hc5s7yj" path="res://New Piskel (1).png" id="2_olhfa"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -18,17 +12,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_riu02")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -131.0
-offset_right = 683.0
-offset_bottom = 166.0
-grow_horizontal = 2
-text = "Soul Dungeon"
-label_settings = SubResource("LabelSettings_aoogi")
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(159.627, 89.6653)
+scale = Vector2(1.00233, 1.01483)
+texture = ExtResource("2_olhfa")
+hframes = 2
+vframes = 4
+frame = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(140, 42)
+scale = Vector2(0.727778, 0.727778)
+texture = ExtResource("2_olhfa")
+hframes = 2
+vframes = 4
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -37,34 +34,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 91.0
-offset_top = -27.0
-offset_right = 132.0
-offset_bottom = 4.0
+offset_left = 84.0
+offset_top = -18.0
+offset_right = 142.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play
-"
+metadata/_edit_group_ = true
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -149.0
-offset_top = 58.0
-offset_right = 29.0
-offset_bottom = 202.0
-grow_horizontal = 2
-text = "Game made by:
-
-Teacher: Endobear (Enrique)
-
-Programmer: Vitor
-Art director: Renato
-Map Creator: David
-"
-label_settings = SubResource("LabelSettings_v25at")
+[node name="Sprite2D2" type="Sprite2D" parent="Button"]
+position = Vector2(27, 12)
+scale = Vector2(0.269293, 0.276051)
+texture = ExtResource("2_olhfa")
+hframes = 2
+vframes = 4
+frame = 2
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 1
@@ -89,14 +73,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 78.0
-offset_top = 50.0
-offset_right = 148.0
-offset_bottom = 81.0
+offset_left = -153.0
+offset_top = 54.0
+offset_right = -83.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit
 "
+
+[node name="Sprite2D2" type="Sprite2D" parent="Button3"]
+position = Vector2(34.9452, 14.7854)
+scale = Vector2(0.31948, 0.335718)
+texture = ExtResource("2_olhfa")
+hframes = 2
+vframes = 4
+frame = 5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]

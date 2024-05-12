@@ -9,7 +9,7 @@ var speedz = speed * 2
 var speedx = speed
 var can_dash = true
 var is_dashing = false
-var dash_dir =  Vector2.ZERO
+var dash_dir =  Vector2.DOWN
 @onready var cooldown_dash = $Timer
 # speedx é o stopping speed
 # speedz é o sprint
@@ -20,7 +20,7 @@ var dash_dir =  Vector2.ZERO
 @onready var hitbox = $hitbox
 @onready var iframes = $Iframes
 var velocidadeKnock = 500
-var velocidade_dash = 900
+var velocidade_dash = 250
 var emKnock = false
 var KnockDirec = Vector2.ZERO
 @onready var knock = $Knock
@@ -101,6 +101,8 @@ func _process(delta):
 				can_dash = false
 				is_dashing = true
 				
+			
+				
 				$duracaodouglas.start()
 				$dashicoldaun.start()
 	
@@ -155,13 +157,12 @@ func _on_dashicoldaun_timeout():
 	can_dash = true
 
 func TrocarAnim():
-	#if estado == "stunado":
-		#var AtualFrame = sprite_2d.frame
-		#sprite_2d.play(estado + direcao)
-		#sprite_2d.frame = AtualFrame
-	#else:
+	print(sprite_2d.animation)
+	if is_dashing:
+		sprite_2d.play("dash" + direcao) 
+	else:
 		
-	sprite_2d.play(estado + direcao)
+		sprite_2d.play(estado + direcao)
 
 
 
