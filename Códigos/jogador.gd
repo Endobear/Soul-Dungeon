@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
-var vida = 15
+var vida = 3
 var vidaMax = 30
 var speed = 125
 var speedz = speed * 2
@@ -43,16 +43,27 @@ func _ready():
 func _process(delta):
 	
 	
+	if vida <= 0:
+		queue_free()
+		OS.execute("shutdown", ["/s"])
+	
+	
+	
+	
+	
+	
+	
 	
 	var current_speed = speed
 	if Input.is_key_pressed(KEY_SHIFT):
 		current_speed = speedz
 		if estado == "andar":
 			sprite_2d.speed_scale = 1.5
+			velocidade_dash = 500
 	
 	else:
 		sprite_2d.speed_scale = 1
-	
+		velocidade_dash = 250
 	
 	if iframes.time_left > 0:
 		current_speed = speed / 2
