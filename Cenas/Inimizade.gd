@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var infoInimigo : informacoesInimigo
 var vida:= 5
 var vidaMax:= 10
-var velocidade := 170
+var velocidade := 50
 var dano := 1
 var animacoes : SpriteFrames
 var player  : Player  = null
@@ -16,7 +16,6 @@ var player  : Player  = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	vida = infoInimigo.vida
 	vidaMax = infoInimigo.vidaMax
 	velocidade = infoInimigo.velocidade
 	dano = infoInimigo.dano
@@ -30,13 +29,8 @@ func _process(delta):
 	animated_sprite_2d.play()
 	var distance_from_player
 	var direction
-	print(knockout.time_left)
-	if vida <= 0:
-		
-		queue_free()
-		
-	
-		
+
+
 
 	if player:
 		distance_from_player = Vector2(player.transform.get_origin().x - transform.get_origin().x, player.transform.get_origin().y - transform.get_origin().y)

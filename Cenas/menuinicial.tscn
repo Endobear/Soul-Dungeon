@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckardvnnnephe"]
+[gd_scene load_steps=6 format=3 uid="uid://ckardvnnnephe"]
 
 [ext_resource type="Script" path="res://Códigos/menuinicial.gd" id="1_riu02"]
 [ext_resource type="Texture2D" uid="uid://c8g0i4hc5s7yj" path="res://New Piskel (1).png" id="2_olhfa"]
+
+[sub_resource type="Animation" id="Animation_j8utb"]
+resource_name = "new_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(0.267943, 0.366021),
+"update": 0,
+"values": [-0.141372, 0.141372]
+}
+
+[sub_resource type="Animation" id="Animation_nc626"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.141372]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qe5tb"]
+_data = {
+"RESET": SubResource("Animation_nc626"),
+"new_animation": SubResource("Animation_j8utb")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -22,6 +60,7 @@ frame = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(140, 42)
+rotation = -0.141372
 scale = Vector2(0.727778, 0.727778)
 texture = ExtResource("2_olhfa")
 hframes = 2
@@ -94,6 +133,11 @@ frame = 5
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qe5tb")
+}
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
