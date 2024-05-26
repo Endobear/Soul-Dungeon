@@ -3,6 +3,21 @@
 [ext_resource type="Script" path="res://Códigos/menuinicial.gd" id="1_riu02"]
 [ext_resource type="Texture2D" uid="uid://c8g0i4hc5s7yj" path="res://New Piskel (1).png" id="2_olhfa"]
 
+[sub_resource type="Animation" id="Animation_nc626"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.141372]
+}
+
 [sub_resource type="Animation" id="Animation_j8utb"]
 resource_name = "new_animation"
 length = 4.0
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.267943, 0.366021),
 "update": 0,
 "values": [-0.141372, 0.141372]
-}
-
-[sub_resource type="Animation" id="Animation_nc626"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.141372]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qe5tb"]

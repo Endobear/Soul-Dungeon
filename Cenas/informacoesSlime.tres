@@ -7,6 +7,6 @@
 script = ExtResource("1_en5wr")
 vida = 5
 vidaMax = 10
-velocidade = 80
+velocidade = 55
 dano = 1
 animacoes = ExtResource("1_xy7n2")

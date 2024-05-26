@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var infoInimigo : informacoesInimigo
 var vida:= 5
 var vidaMax:= 10
-var velocidade := 50
+var velocidade := 55
 var dano := 1
 var animacoes : SpriteFrames
 var player  : Player  = null
@@ -29,7 +29,8 @@ func _process(delta):
 	animated_sprite_2d.play()
 	var distance_from_player
 	var direction
-
+	if vida <=0:
+		queue_free()
 
 
 	if player:
@@ -37,15 +38,15 @@ func _process(delta):
 		direction = Vector2(clamp(distance_from_player.x, - 1, 1), clamp(distance_from_player.y, - 1, 1)).normalized()
 	
 		if knockout.time_left == 0:
-			velocity.x = direction.x * velocidade
-			velocity.y = direction.y * velocidade
-		
+			velocity.x =move_toward(velocity.x, direction.x * velocidade,velocidade/2)
+			velocity.y =move_toward(velocity.y, direction.y * velocidade,velocidade/2)
 	else:
 		velocity.x = 0; velocity.y = 0
 		
-		
+
 	if knockout.time_left > 0:
-		velocity = -direction * 120
+		if player:
+			velocity = -direction * 120
 	move_and_slide()
 	
 

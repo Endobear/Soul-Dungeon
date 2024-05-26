@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://o0bs8ltmsfqs"]
+
+[ext_resource type="Texture2D" uid="uid://dbpuwmlyajxm0" path="res://Sprites/faca traz.png" id="1_1w7hr"]
+[ext_resource type="Script" path="res://carlos_alberto.gd" id="1_4w3e5"]
+[ext_resource type="Texture2D" uid="uid://chsb4dyexxkwv" path="res://Sprites/faca frente.png" id="1_wjgnp"]
+[ext_resource type="Texture2D" uid="uid://osywv23h5aa4" path="res://Sprites/faca.png" id="2_grcpg"]
+[ext_resource type="Texture2D" uid="uid://dnkhydmcyiqsi" path="res://Sprites/faca esquerda.png" id="4_7gsmi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7d8xq"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1w7hr")
+}],
+"loop": true,
+"name": &"facaBaixo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wjgnp")
+}],
+"loop": true,
+"name": &"facaCima",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_grcpg")
+}],
+"loop": true,
+"name": &"facaDireito",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7gsmi")
+}],
+"loop": true,
+"name": &"facaEsquerdo",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6tdw"]
+size = Vector2(1, 13)
+
+[node name="Carlos Alberto" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_4w3e5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7d8xq")
+animation = &"facaBaixo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u6tdw")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_u6tdw")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

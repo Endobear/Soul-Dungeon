@@ -5,7 +5,7 @@ extends CharacterBody2D
 var vida = 3
 var vidaMax = 30
 var speed = 125
-var speedz = speed * 2
+var speedz = speed * 1.5
 var speedx = speed
 var can_dash = true
 var is_dashing = false
@@ -27,7 +27,8 @@ var KnockDirec = Vector2.ZERO
 @onready var cooldown_atk = $CooldownATK
 var atacou = false
 @onready var animation_player = $Camera2D/AnimationPlayer
-
+@onready var cooldown_atk_2 = $CooldownATK2
+@onready var faca = load("res://carlos_alberto.tscn")
 
 
 
@@ -50,7 +51,7 @@ func _process(delta):
 		current_speed = speedz
 		if estado == "andar":
 			sprite_2d.speed_scale = 1.5
-			velocidade_dash = 500
+			velocidade_dash = 250
 	
 	else:
 		sprite_2d.speed_scale = 1
@@ -84,7 +85,7 @@ func _process(delta):
 	
 	
 	
-	if direction and (not is_dashing) and (estado != "ataqueleve" ):
+	if direction and (not is_dashing) and ((estado != "ataquePesado" and estado != "ataqueleve") ):
 		estado = "andar"
 	
 		if(movimento_vertical == 1):
@@ -106,7 +107,7 @@ func _process(delta):
 		velocity = direction.normalized() * current_speed
 	elif estado == "died":
 		velocity = Vector2.ZERO
-	elif not is_dashing and not emKnock and  estado != "ataqueleve" :
+	elif not is_dashing and not emKnock and  (estado != "ataquePesado" and estado != "ataqueleve") :
 		velocity.x = move_toward(velocity.x,0,speedx)
 		velocity.y = move_toward(velocity.y,0,speedx)
 		estado = "idle"
@@ -122,13 +123,24 @@ func _process(delta):
 				$dashicoldaun.start()
 	
 	
-	if Input.is_action_just_pressed("ataki_levi") and (estado != "ataqueleve" and estado != "died")  and !emKnock:
+	if Input.is_action_just_pressed("ataque_pesado") and ((estado != "ataquePesado" and estado != "ataqueleve") and estado != "died")  and !emKnock:
 		velocity = Vector2.ZERO
 		cooldown_atk.start()
+		estado = "ataquePesado"
+		
+	if Input.is_action_just_pressed("atack_on_levi") and (estado != "ataqueleve" and estado != "died")  and !emKnock:
+		velocity = Vector2.ZERO
+		cooldown_atk_2.start()
 		estado = "ataqueleve"
+		var nova_faca = faca.instantiate()
+		nova_faca.position = position
+		nova_faca.velocity = dash_dir * 500
+		nova_faca.rotation = hurtbox.rotation
+		owner.add_child(nova_faca)
 		
 	elif iframes.time_left > 0.0:
 		estado = "stunado"
+		
 	elif is_dashing:
 		velocity = dash_dir * velocidade_dash
 		 
@@ -216,7 +228,7 @@ func ataque():
 	for objeto in objetosAtacados:
 		if objeto != self:
 			if objeto is Inimigo:
-				objeto.levar_dano(1)
+				objeto.levar_dano(2)
 
 
 func _on_cooldown_atk_timeout():
