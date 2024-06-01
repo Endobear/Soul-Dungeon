@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=3 uid="uid://ogjebt3wfacr"]
+[gd_scene load_steps=182 format=3 uid="uid://ogjebt3wfacr"]
 
 [ext_resource type="Script" path="res://Códigos/jogador.gd" id="1_4oun1"]
 [ext_resource type="Texture2D" uid="uid://dok00lhvkmete" path="res://Sprites/para baixo (protagonista).png" id="2_w6l37"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://yucc3p1t4egw" path="res://Sprites/nomade ataque fraco atrás (protagonista).png" id="16_m3knc"]
 [ext_resource type="Texture2D" uid="uid://dvhpwu2ycs86t" path="res://Sprites/nomade ataque fraco esquerda (protagonista).png" id="17_0euwf"]
 [ext_resource type="Texture2D" uid="uid://c5ed4t6e57vch" path="res://Sprites/nomade ataque fraco frente (protagonista).png" id="18_cw2ug"]
+[ext_resource type="Texture2D" uid="uid://c8lgmbnemarue" path="res://Sprites/sprite_0.png" id="20_p4an5"]
+[ext_resource type="Texture2D" uid="uid://bxt77nnrnilfa" path="res://Sprites/New Piskel (7).png" id="21_3spca"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yx1jl"]
 atlas = ExtResource("2_w6l37")
@@ -1409,11 +1411,11 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_bao5m")
 
 [node name="duracaodouglas" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.5
 autostart = true
 
 [node name="dashicoldaun" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 1.6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -1424,16 +1426,37 @@ libraries = {
 "": SubResource("AnimationLibrary_lk4dj")
 }
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer"]
+offset_left = -1.0
+offset_right = 98.0
+offset_bottom = 30.0
+texture = ExtResource("20_p4an5")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Camera2D/CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 19.0
+offset_right = 97.0
+offset_bottom = 28.0
+max_value = 15.0
+value = 15.0
+nine_patch_stretch = true
+texture_progress = ExtResource("21_3spca")
+
 [node name="Control" type="Control" parent="Camera2D"]
 visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 168.0
+offset_top = 88.0
+offset_right = 208.0
+offset_bottom = 128.0
+scale = Vector2(0.895664, 0.879267)
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Control"]
-layout_mode = 0
 offset_left = -188.0
 offset_top = -100.0
 offset_right = 178.0

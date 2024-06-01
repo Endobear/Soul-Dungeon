@@ -2,12 +2,14 @@ class_name Player
 extends CharacterBody2D
 
 @onready var text_morte = $Camera2D/Control/Text_Morte
-var vida = 3
-var vidaMax = 30
+var vida = 15
+var vidaMax = 15
+
 var speed = 125
 var speedz = speed * 1.5
 var speedx = speed
 var can_dash = true
+@onready var texture_progress_bar = $Camera2D/CanvasLayer/TextureRect/TextureProgressBar
 var is_dashing = false
 var dash_dir =  Vector2.DOWN
 @onready var cooldown_dash = $dashicoldaun
@@ -20,7 +22,8 @@ var dash_dir =  Vector2.DOWN
 @onready var hitbox = $hitbox
 @onready var iframes = $Iframes
 var velocidadeKnock = 500
-var velocidade_dash = 250
+var velocidade_dash = 350
+
 var emKnock = false
 var KnockDirec = Vector2.ZERO
 @onready var knock = $Knock
@@ -44,7 +47,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	
+	texture_progress_bar.max_value = vidaMax
+	texture_progress_bar.value = vida
 	
 	var current_speed = speed
 	if Input.is_key_pressed(KEY_SHIFT):
