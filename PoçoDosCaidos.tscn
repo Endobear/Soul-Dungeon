@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-[gd_scene load_steps=3 format=3 uid="uid://cnxru71o5m5ke"]
-
-[ext_resource type="Texture2D" uid="uid://uehf5h6icp67" path="res://Sprites/poço dos caidos.png" id="1_1n754"]
-[ext_resource type="TileSet" uid="uid://b6isyg5hc82e2" path="res://CarlosTileSet.tres" id="2_n21k4"]
-=======
 [gd_scene load_steps=6 format=3 uid="uid://cnxru71o5m5ke"]
 
 [ext_resource type="Texture2D" uid="uid://uehf5h6icp67" path="res://Sprites/poço dos caidos.png" id="1_1n754"]
@@ -135,7 +129,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ullxv")
->>>>>>> 536acfde2581771e9ae5e2684e4db17c7ef76c2a
 
 [node name="Node2D" type="Node2D"]
 
