@@ -39,9 +39,16 @@ var atacou = false
 
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite_2d.play("default")
+
+
+
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -89,6 +96,12 @@ func _process(delta):
 	
 	
 	
+	
+	
+	
+	
+	
+	
 	if direction and (not is_dashing) and ((estado != "ataquePesado" and estado != "ataqueleve") ):
 		estado = "andar"
 	
@@ -116,6 +129,12 @@ func _process(delta):
 		velocity.y = move_toward(velocity.y,0,speedx)
 		estado = "idle"
 	
+	
+	
+	
+	
+	
+	
 	if Input.is_action_just_pressed("ui_accept") and can_dash:
 			
 				can_dash = false
@@ -127,10 +146,20 @@ func _process(delta):
 				$dashicoldaun.start()
 	
 	
+	
+	
+	
+	
+	
 	if Input.is_action_just_pressed("ataque_pesado") and ((estado != "ataquePesado" and estado != "ataqueleve") and estado != "died")  and !emKnock:
 		velocity = Vector2.ZERO
 		cooldown_atk.start()
 		estado = "ataquePesado"
+		
+		
+		
+		
+		
 		
 	if Input.is_action_just_pressed("atack_on_levi") and (estado != "ataqueleve" and estado != "died")  and !emKnock:
 		velocity = Vector2.ZERO
@@ -139,7 +168,7 @@ func _process(delta):
 		var nova_faca = faca.instantiate()
 		nova_faca.position = position
 		nova_faca.velocity = dash_dir * 500
-		nova_faca.rotation = hurtbox.rotation
+		nova_faca.rotation = nova_faca.velocity.angle()
 		owner.add_child(nova_faca)
 		
 	elif iframes.time_left > 0.0:
@@ -151,11 +180,19 @@ func _process(delta):
 		
 		
 		
+		
+		
 	if cooldown_atk.time_left > 0:
 		velocity = dash_dir * 60
 		if atacou == false:
 			ataque()
 			atacou = true
+
+
+
+
+
+
 
 					
 	var hits = hitbox.get_overlapping_areas() 
