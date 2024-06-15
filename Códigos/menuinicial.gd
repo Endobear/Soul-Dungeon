@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func _on_button_button_down():
-	get_tree().change_scene_to_file("res://Cenas/TesteBatalha.tscn")
+	get_tree().change_scene_to_file("res://OOGABOOGA.tscn")
 
 
 func _on_button_2_button_down():

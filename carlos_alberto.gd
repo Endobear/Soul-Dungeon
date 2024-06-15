@@ -1,15 +1,25 @@
 extends CharacterBody2D
 @onready var area_2d = $Area2D
+@onready var timer_despawn = $TimerDespawn
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	move_and_slide()
+	if velocity != Vector2.ZERO:
+		rotation = velocity.angle()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		velocity = Vector2.ZERO
+		if timer_despawn.is_stopped():
+			timer_despawn.start()
+
+		
 
 
 func _on_area_2d_area_entered(area)	 :# Replace with function body.
@@ -19,3 +29,8 @@ func _on_area_2d_area_entered(area)	 :# Replace with function body.
 			if objeto is Inimigo:
 				objeto.levar_dano(1)
 				queue_free()
+				
+
+
+func _on_timer_despawn_timeout():
+	queue_free()
