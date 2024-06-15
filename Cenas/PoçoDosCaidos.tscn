@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnxru71o5m5ke"]
+[gd_scene load_steps=5 format=3 uid="uid://dtfanc8ptuope"]
 
 [ext_resource type="Texture2D" uid="uid://uehf5h6icp67" path="res://Sprites/poço dos caidos.png" id="1_1n754"]
-[ext_resource type="TileSet" uid="uid://b6isyg5hc82e2" path="res://CarlosTileSet.tres" id="2_1irf4"]
+[ext_resource type="Script" path="res://Cenas/nivel.gd" id="1_ir4pr"]
+[ext_resource type="TileSet" uid="uid://no6346jgbl4f" path="res://CarlosTileSet.tres" id="2_1irf4"]
 [ext_resource type="PackedScene" uid="uid://ogjebt3wfacr" path="res://Cenas/jogador.tscn" id="3_useea"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_ir4pr")
 
 [node name="PoçoDosCaidos" type="Sprite2D" parent="."]
 visible = false

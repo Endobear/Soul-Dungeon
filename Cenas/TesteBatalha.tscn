@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://kxwck1ukxyjn"]
+[gd_scene load_steps=6 format=3 uid="uid://kxwck1ukxyjn"]
 
 [ext_resource type="Script" path="res://Cenas/nivel.gd" id="1_sh61p"]
-[ext_resource type="TileSet" uid="uid://dwxwlvgn103g3" path="res://uga2.tres" id="2_a8rkg"]
+[ext_resource type="TileSet" uid="uid://d1kcm7mmmvuy3" path="res://uga2.tres" id="2_a8rkg"]
 [ext_resource type="PackedScene" uid="uid://ogjebt3wfacr" path="res://Cenas/jogador.tscn" id="2_fon73"]
-[ext_resource type="TileSet" uid="uid://b6isyg5hc82e2" path="res://CarlosTileSet.tres" id="2_ttvq1"]
 [ext_resource type="PackedScene" uid="uid://ccpeh2nrjl0t8" path="res://Cenas/Inimizade.tscn" id="3_62ytn"]
-[ext_resource type="Resource" uid="uid://ck187iyyi10mt" path="res://Carlos Esqueletoide.tres" id="4_a6q1l"]
+[ext_resource type="Resource" path="res://Carlos Esqueletoide.tres" id="4_a6q1l"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_sh61p")
@@ -66,4 +65,3 @@ position = Vector2(-567, -2378)
 
 [node name="inimigo14" parent="." instance=ExtResource("3_62ytn")]
 position = Vector2(-1114, -2616)
-

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Cenas/Inimizade.gd" id="1_yx2e7"]
 [ext_resource type="Resource" uid="uid://c2wvgnjnm06u7" path="res://Cenas/informacoesSlime.tres" id="2_gc0q0"]
-[ext_resource type="SpriteFrames" uid="uid://q4rt00ldh4y7" path="res://Cenas/animaçõesCarlosAdalberto.tres" id="3_kn68r"]
+[ext_resource type="SpriteFrames" uid="uid://cfynn15fxe63l" path="res://Cenas/animaçõesCarlosAdalberto.tres" id="3_kn68r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k44n"]
 size = Vector2(32, 31)
