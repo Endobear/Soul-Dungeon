@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@onready var text_morte = $Camera2D/Control/Text_Morte
+@onready var text_morte = %Text_Morte
 var vida = 15
 var vidaMax = 15
 
@@ -236,15 +236,17 @@ func TrocarAnim():
 			sprite_2d.play("died") 
 			match RandomNumberGenerator.new().randi_range(1,5):
 				1:
-					text_morte.text = "kakakakaka lixo"
+					text_morte.text = "esqueci de esquecer que eu esqueci"
 				2:
-					text_morte.text = "novo atacante do vasco contratado!"
+					text_morte.text = "你真的翻譯了嗎？  真是浪費時間！"
 				3:
-					text_morte.text = "OMG EU MORRI JOGO RUIM!!1!!1111"
+					text_morte.text = "batatas?"
 				4:
-					text_morte.text = "Você faleceu????????"
+					text_morte.text = "
+					"
 				5:
 					text_morte.text = "ai, ki dor"
+			sprite_2d.reparent(text_morte.owner)
 			animation_player.play("animMorte")
 		elif is_dashing:
 			sprite_2d.play("dash" + direcao) 
@@ -278,8 +280,7 @@ func _on_cooldown_atk_timeout():
 
 
 func _on_button_button_down():
-	get_tree().reload_current_scene()
-
+	get_tree().change_scene_to_file("res://OOGABOOGA.tscn")
 
 func _on_button_2_button_down():
 	get_tree().change_scene_to_file("res://Cenas/menuinicial.tscn")

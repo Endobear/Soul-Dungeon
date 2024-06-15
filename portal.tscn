@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7gsdtlprvckl"]
+
+[ext_resource type="Script" path="res://asas.gd" id="1_5lbmm"]
+[ext_resource type="Texture2D" uid="uid://cs65h7ptjyici" path="res://MYBHJF CKHVS EG.png" id="2_3y5a6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7i62"]
+atlas = ExtResource("2_3y5a6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwtn5"]
+atlas = ExtResource("2_3y5a6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqy4n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7i62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwtn5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7i62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwtn5")
+}],
+"loop": true,
+"name": &"novanimaçao",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rqne2"]
+radius = 16.0
+height = 36.0
+
+[node name="StaticBody2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_5lbmm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pqy4n")
+animation = &"novanimaçao"
+frame_progress = 0.89379
+
+[node name="Area2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rqne2")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
