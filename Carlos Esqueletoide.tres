@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="informacoesInimigo" load_steps=3 format=3 uid="uid://ck187iyyi10mt"]
+[gd_resource type="Resource" script_class="informacoesInimigo" load_steps=3 format=3 uid="uid://dfg7u0yr5h21g"]
 
-[ext_resource type="SpriteFrames" uid="uid://q4rt00ldh4y7" path="res://Cenas/animaçõesCarlosAdalberto.tres" id="1_kwtct"]
+[ext_resource type="SpriteFrames" uid="uid://cfynn15fxe63l" path="res://Cenas/animaçõesCarlosAdalberto.tres" id="1_kwtct"]
 [ext_resource type="Script" path="res://Códigos/informacoesInimigo.gd" id="1_tsb0x"]
 
 [resource]
 script = ExtResource("1_tsb0x")
 vida = 7
 vidaMax = 10
-velocidade = 170
+velocidade = 120
 dano = 3
 animacoes = ExtResource("1_kwtct")

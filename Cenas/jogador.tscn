@@ -1528,6 +1528,7 @@ label_settings = SubResource("LabelSettings_yuspu")
 
 [node name="Button" type="Button" parent="Camera2D/Control"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = -155.0
 offset_top = 58.0
 offset_right = -72.0
@@ -1550,6 +1551,7 @@ está 👍
 
 [node name="Button2" type="Button" parent="Camera2D/Control"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 43.0
 offset_top = 58.0
 offset_right = 142.0
