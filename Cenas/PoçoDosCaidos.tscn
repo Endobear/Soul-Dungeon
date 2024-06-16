@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtfanc8ptuope"]
+[gd_scene load_steps=7 format=3 uid="uid://dtfanc8ptuope"]
 
 [ext_resource type="Texture2D" uid="uid://uehf5h6icp67" path="res://Sprites/poço dos caidos.png" id="1_1n754"]
 [ext_resource type="Script" path="res://Cenas/nivel.gd" id="1_ir4pr"]
 [ext_resource type="TileSet" uid="uid://no6346jgbl4f" path="res://CarlosTileSet.tres" id="2_1irf4"]
 [ext_resource type="PackedScene" uid="uid://ogjebt3wfacr" path="res://Cenas/jogador.tscn" id="3_useea"]
 [ext_resource type="PackedScene" uid="uid://ccpeh2nrjl0t8" path="res://Cenas/Inimizade.tscn" id="5_gcs4n"]
+[ext_resource type="Resource" uid="uid://da6gpbbhqvo6h" path="res://Cenas/informacoesArmaduraVazia.tres" id="6_w8yux"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ir4pr")
+ProximoNivel = "res://créditos.tscn"
 
 [node name="PoçoDosCaidos" type="Sprite2D" parent="."]
 visible = false
@@ -35,4 +37,5 @@ position = Vector2(304, -288)
 position = Vector2(1084, -725)
 
 [node name="inimigo4" parent="." instance=ExtResource("5_gcs4n")]
-position = Vector2(1332, -566)
+position = Vector2(1327, -518)
+infoInimigo = ExtResource("6_w8yux")

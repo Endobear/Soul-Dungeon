@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvbmf4064ane3"]
+[gd_scene load_steps=5 format=3 uid="uid://dutw5dgxwslmm"]
 
 [sub_resource type="Animation" id="Animation_mg0q2"]
 length = 0.001
@@ -79,5 +79,6 @@ offset_left = -20.0
 offset_top = -9.0
 offset_right = 329.0
 offset_bottom = 191.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true

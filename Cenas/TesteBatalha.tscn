@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://kxwck1ukxyjn"]
+[gd_scene load_steps=7 format=3 uid="uid://kxwck1ukxyjn"]
 
 [ext_resource type="Script" path="res://Cenas/nivel.gd" id="1_sh61p"]
 [ext_resource type="TileSet" uid="uid://d1kcm7mmmvuy3" path="res://uga2.tres" id="2_a8rkg"]
 [ext_resource type="PackedScene" uid="uid://ogjebt3wfacr" path="res://Cenas/jogador.tscn" id="2_fon73"]
 [ext_resource type="PackedScene" uid="uid://ccpeh2nrjl0t8" path="res://Cenas/Inimizade.tscn" id="3_62ytn"]
+[ext_resource type="Resource" uid="uid://dfg7u0yr5h21g" path="res://Carlos Esqueletoide.tres" id="6_h2v6t"]
 [ext_resource type="Resource" uid="uid://da6gpbbhqvo6h" path="res://Cenas/informacoesArmaduraVazia.tres" id="6_yx2xj"]
 
 [node name="Node2D" type="Node2D"]
@@ -12,6 +13,7 @@ ProximoNivel = "res://Cenas/PoçoDosCaidos.tscn"
 metadata/_edit_vertical_guides_ = [-679.0]
 
 [node name="TileMap2" type="TileMap" parent="."]
+z_index = -1
 texture_filter = 1
 position = Vector2(1, 0)
 scale = Vector2(0.5, 0.5)
@@ -23,11 +25,8 @@ layer_1/tile_data = PackedInt32Array(-10027074, 393216, 3, -9961537, 393216, 3, 
 [node name="jogador" parent="." instance=ExtResource("2_fon73")]
 position = Vector2(53, -6)
 
-[node name="inimigo" parent="." instance=ExtResource("3_62ytn")]
-position = Vector2(-6, -3017)
-infoInimigo = ExtResource("6_yx2xj")
-
 [node name="inimigo2" parent="." instance=ExtResource("3_62ytn")]
+visible = false
 position = Vector2(-859, -511)
 
 [node name="inimigo15" parent="." instance=ExtResource("3_62ytn")]
@@ -48,6 +47,7 @@ position = Vector2(598, -1379)
 
 [node name="inimigo7" parent="." instance=ExtResource("3_62ytn")]
 position = Vector2(633, -624)
+infoInimigo = ExtResource("6_h2v6t")
 
 [node name="inimigo8" parent="." instance=ExtResource("3_62ytn")]
 position = Vector2(-1058, -2322)

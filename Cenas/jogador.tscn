@@ -1476,7 +1476,6 @@ libraries = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-layer = 0
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D/CanvasLayer"]
 offset_left = -1.0
@@ -1498,14 +1497,12 @@ texture_progress = ExtResource("21_3spca")
 [node name="Control" type="Control" parent="Camera2D"]
 visible = false
 z_index = 1
-z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 8.0
 offset_right = 40.0
 offset_bottom = 48.0
 scale = Vector2(0.895664, 0.879267)
-mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Control"]
 layout_mode = 0
@@ -1528,13 +1525,11 @@ label_settings = SubResource("LabelSettings_yuspu")
 
 [node name="Button" type="Button" parent="Camera2D/Control"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_left = -155.0
 offset_top = 58.0
 offset_right = -72.0
 offset_bottom = 89.0
 disabled = true
-action_mode = 0
 text = "Nova Run"
 
 [node name="Label" type="Label" parent="Camera2D/Control/Button"]
