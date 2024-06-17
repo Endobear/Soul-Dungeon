@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckardvnnnephe"]
+[gd_scene load_steps=7 format=3 uid="uid://ckardvnnnephe"]
 
 [ext_resource type="Script" path="res://Códigos/menuinicial.gd" id="1_riu02"]
 [ext_resource type="Texture2D" uid="uid://c8g0i4hc5s7yj" path="res://New Piskel (1).png" id="2_olhfa"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oaqrq"]
 
 [sub_resource type="Animation" id="Animation_nc626"]
 length = 0.001
@@ -48,7 +50,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_riu02")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(159.627, 89.6653)
@@ -68,18 +72,17 @@ vframes = 4
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 84.0
-offset_top = -18.0
-offset_right = 142.0
-offset_bottom = 7.0
+anchors_preset = -1
+anchor_left = 0.7625
+anchor_top = 0.4
+anchor_right = 0.94375
+anchor_bottom = 0.538889
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_oaqrq")
+flat = true
 metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Button"]
 position = Vector2(27, 12)
@@ -90,36 +93,29 @@ vframes = 4
 frame = 2
 
 [node name="Button2" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 78.5
-offset_top = 15.0
-offset_right = 148.5
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+anchor_left = 0.74375
+anchor_top = 0.605556
+anchor_right = 0.9625
+anchor_bottom = 0.777778
 text = "Settings
 "
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -153.0
-offset_top = 54.0
-offset_right = -83.0
-offset_bottom = 85.0
+anchors_preset = -1
+anchor_left = 0.021875
+anchor_top = 0.8
+anchor_right = 0.240625
+anchor_bottom = 0.972222
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit
 "
+flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Button3"]
 position = Vector2(34.9452, 14.7854)

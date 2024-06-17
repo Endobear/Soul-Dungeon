@@ -1,5 +1,5 @@
 extends Control
-
+const OOGABOOGA = preload("res://Cenas/OOGABOOGA.tscn")
 @onready var animation_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func _on_button_button_down():
-	get_tree().change_scene_to_file("res://OOGABOOGA.tscn")
+	get_tree().change_scene_to_packed(OOGABOOGA)
 
 
 func _on_button_2_button_down():
